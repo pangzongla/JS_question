@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// call() apply() bind() 的区别 
+// bind()==》函数.bind(null,1,3,4,5)() 返回的是个函数所以要()
+// call()==》 函数.call(null,1,2,3,4)
+// apply()==》函数.call(null,[1,2,3,4])
+// 相同:都是让一个函数执行的时候改变this的指向
+var arr = [2,4,4,56,7,43];
+console.log(
+	Math.min.apply(null,arr)// null也可以改为window
+)
+console.log(Math.min(1,2,3,45,5))
+</script>
+</body>
+</html>

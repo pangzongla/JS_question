@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 输出的结果为？
+			var length = 10;
+			function fn(){
+				console.log(this.length); //this指向window
+			}
+			var obj = {
+				lenth: 5,
+				method: function(){
+					fn();
+				}
+			}
+			obj.method();
+		</script>
+	</body>
+</html>

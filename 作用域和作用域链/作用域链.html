@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	// 问两个结果为什么？
+	// 作用域:现在内部找,找不到,就向外找
+var bar = 1;
+function test(){
+	console.log(bar);//undefined 因为变量提升
+	var bar = 2;
+	console.log(bar);//2
+}
+test()
+
+// function test(){
+// 	console.log(bar);//如果连变量申明都没有就直接报错，直接后面接一句bar=2，也报错，只有放前面才行
+// 	bar=2
+// }
+// test()
+</script>
+	
+</body>
+</html>

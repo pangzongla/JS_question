@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 判断是否为数组的方法
+var arr = [1,2,3];
+console.log(typeof arr); //object 所以这种方法不行
+function isArray(arr){
+    // if(arr instanceof Array)return '数组'  
+	if(arr.__proto__.constructor===Array)return '数组' //上下两种方法都可以
+}
+console.log(isArray(arr))
+
+</script>	
+</body>
+</html>

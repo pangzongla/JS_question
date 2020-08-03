@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 给array原型对象添加方法，且这个方法是去重
+var arr = [1,2,3,2,3];
+Array.prototype.unique = function(){
+    //考点：里面都用this
+	var brr = [],
+		obj = {};
+	for(var i=0;i<this.length;i++){
+		if(!obj[this[i]]){
+			obj[this[i]]=true;
+			brr.push(this[i])
+		}
+	}
+	return brr;
+}
+console.log(arr.unique()); // 考点：执行原型对象上的方法是构造函数对象本身
+</script>
+</body>
+</html>

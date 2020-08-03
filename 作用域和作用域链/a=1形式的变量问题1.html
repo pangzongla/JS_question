@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	// 1和2这两篇面试题主要考的是 a=x 形式的变量问题，注意这种形式的变量没有变量提升，只有执行到了后才生效
+	// 第一篇考的是当 a=x 形式的变量是个独立的变量，直接 c = 30 表明是个全局变量
+
+var f = true;
+if(f===true){
+	var a = 10;
+}
+function fn(){
+	var b = 20;
+	c=30;
+	// 同理 var b = c =20 ，c也是个全局变量
+}
+fn();
+console.log(a,c) // c是全局变量
+console.log(b) // b是var声明的变量，为函数级作用域，所以报错
+</script>
+	
+</body>
+</html>

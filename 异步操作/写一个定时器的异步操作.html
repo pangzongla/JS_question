@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 实现一个sleep函数,比如sleep(1000)意味着等待1s,用异步的方式写
+			function sleep(ms){
+				return new Promise(resolve=>{
+					setTimeout(resolve,ms)
+				})
+			}
+			
+			(async ()=>{
+				console.log("先打这个")
+				await sleep(2000)
+				console.log("n秒后打这个")
+			})()
+		</script>
+	</body>
+</html>

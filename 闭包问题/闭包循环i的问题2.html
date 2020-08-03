@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 问这个循环输出什么？
+			// 考点：闭包   函数内部没有i，向外找，找到已经变成3的i。改成let就正常
+			for (var i = 0; i < 3; i++) {
+				setTimeout(function() {
+					console.log(i);
+				}, 1000 * i)
+			}
+
+            // 同理
+			// for (var i = 0; i < 6; i++) {
+			// 	setTimeout(function() {
+			// 		console.log(i)
+			// 	}, 1000)
+			// }
+
+			/* for (var i = 0; i < 6; i++) {
+				setInterval(function() {
+					console.log(i)
+				}, 1000)
+			} */
+		</script>
+	</body>
+</html>

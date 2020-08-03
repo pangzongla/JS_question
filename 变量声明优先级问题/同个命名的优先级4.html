@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+
+		<script>
+			// 输出什么？  这个题要结合闭包
+			function c() {
+				var b = 1;
+
+				function a() {
+					console.log('1', b);
+					var b = 2;
+					console.log('2', b);
+				}
+				a();
+				console.log('3', b);
+			}
+			c();
+// ---------------------------------------------------------------------
+
+			// console.log(typeof fn);
+
+			// function fn() {}
+			// var fn;
+		</script>
+
+	</body>
+</html>

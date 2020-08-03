@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 理解什么是浅拷贝:拷贝对象属性,一个改变会互相影响
+			var arr = [1, 2, 3];
+			var brr = arr;
+			arr[0] = 'zhangsan'; //brr也会跟着改变
+			console.log(arr, brr);
+
+			// 浅拷贝其实也就是引用类型的拷贝
+			var obj1 = {
+				a: "hellow" //引用类型
+			}
+			var obj2 = obj1; // 引用类型拷贝，都指向同一个原生对象
+			obj2.a = "world";
+			console.log(obj1.a, obj2.a)
+		</script>
+	</body>
+</html>

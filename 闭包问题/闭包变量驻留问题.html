@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str = '10';
+			function add(){
+				var str = '0';
+				return function(){
+					str+=1;
+					console.log(str);
+				}
+			}
+			var s = add() //意思为执行add，过程：执行var str = '0'，建立虚拟闭包作用域，然后返回一个
+			              //包内的函数给s存储，function(){str+=1;console.log(str);} 
+			s(); // 发现不认识str向外找，之前闭包的虚拟作用域有声明为‘0’，于是str修改为01
+			s(); // 上一个函数相当于执行了一个str=1，所以向外找虚拟作用域的str已经是01了，结果为011
+			
+			console.log("外面环境的还是10",str)
+			
+			// 同理:注意这次是-
+			function reduce(){
+				var str = '0'
+				return function(){
+					str-=1;
+					console.log(str);
+				}
+			}
+			var r = reduce()
+			r();
+			r();
+		</script>
+	</body>
+</html>

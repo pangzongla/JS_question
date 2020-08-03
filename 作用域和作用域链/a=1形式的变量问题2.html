@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 第二篇考的是重复的变量，根据语境（执行环境），既可以是本层的局部变量，又可以是外层的局部变量
+
+        function fn() {
+            var a = 10
+            window.a = 20
+            console.log(a) 
+            //因为作用域的问题，先找本层的变量，再找外部的，虽然window.a是在本层的，但是它是一个全局变量
+            // 所以是找的是10
+        }
+
+        function fn() {
+            var a = 10
+            window.a = 20
+            a = 30 //此时a已经是局部变量，根据语境，a=30是局部变量的改变
+            console.log(this.a) //20
+        }
+
+        window.onload = function fn() {
+            window.a = 20
+            a = 30 //因为要打印内部的变量，此时语境，她是本层的变量
+            console.log(a)  //30
+        }
+
+        function fn() {
+            window.a = 20
+            a = 30 //因为要打印全局的变量，此时语境，她是全局变量的修改
+            console.log(this.a)  //30
+        }
+
+        function fn() {
+            window.a = 20
+            a = 30 //要打印全局的变量，但是下面有个局部的变量声明，根据语境，变成修改局部变量
+            var a
+            console.log(this.a)  //20
+        }
+
+    </script>
+</body>
+</html>

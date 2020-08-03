@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+	// 问打印出什么？
+// 考点:对象内容如果有同样的内容,下面的会把上面的覆盖掉
+// var arr = {
+// 	'name':'章三'
+// };
+// var brr = { 
+//  'name':"李四"
+// };
+// var obj = {}
+// obj[arr] = '数组arr';
+// obj[brr] = '数组brr';
+// console.log(obj)
+// --------------------------------------------------------------------
+var a = {
+  // {b}:123,
+  // {c}:456 把上面的覆盖了
+}
+var b = {
+	key:"a"
+}
+var c = {
+	key:"c"
+}
+a[b]='123';
+a[c]='456';
+console.dir(a);
+console.log(a[b]);
+</script>
+	
+</body>
+</html>

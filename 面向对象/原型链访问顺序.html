@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<script>
+// 构造函数问题,打印出什么？
+function fn(){
+	this.name="张三"
+	this.run=function(){
+		return 111
+	}
+} 
+fn.prototype.name="李四";
+fn.prototype.run=function(){
+	return 222;
+}
+var obj = new fn();
+console.log(obj.name,obj.run())//考点：首先会找构造函数本身有没有，没有再找原生对象上
+
+
+</script>	
+
+</body>
+</html>

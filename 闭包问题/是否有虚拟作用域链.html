@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 问打印结果是什么？
+			// 三层闭包
+			function fun(n, o) {
+				console.log(o)
+				return {
+					fun: function(m) {
+						return fun(m, n);
+					}
+				}
+			}
+
+			// var a = fun(0);  //先是打印undefined,然后在赋值fun函数fun:function(m){return fun(m,n);}
+			// a.fun(1); //闭包原理，同a一个虚拟作用域，n=0，所以执行fun(1,0)，打印0，因为再执行了一次fun，这个就形成了另一个虚拟作用域，与a的虚拟作用域无关
+			// a.fun(2); //闭包原理，同a一个虚拟作用域，n=0，所以执行fun(2,0)，打印0，因为再执行了一次fun，这个就形成了另一个虚拟作用域，与a的虚拟作用域无关
+			// a.fun(3); //闭包原理，同a一个虚拟作用域，n=2，所以执行fun(3,0)，打印0，因为再执行了一次fun，这个就形成了另一个虚拟作用域，与a的虚拟作用域无关
+
+
+			// var b = fun(0).fun(1).fun(2).fun(3);
+			// 1 打印undefined,返回fun:function(m){return fun(m,0);}
+			// 2 执行fun:function(m){return fun(m,n);},最终执行fun(1,0),打印0,返回fun:function(m){return fun(m,1);}
+			// 3 执行fun:function(m){return fun(m,1);},最终执行fun(2,1),打印1,返回fun:function(m){return fun(m,2);}
+			// 4 执行fun:function(m){return fun(m,2);},最终执行fun(3,2),打印2,返回fun:function(m){return fun(m,3);}
+			// 重点是这样的方式形成了虚拟作用域链
+
+
+			var c = fun(0).fun(1); //先是打印undefined，返回fun:function(m){return fun(m,0);}，
+			//接下执行返回的函数fun(1,0)，先打印0，然后c被赋值fun:function(m){return fun(m,1);}
+			c.fun(2) //执行fun(2,1),打印1
+			c.fun(3) //执行fun(3,1),打印1
+		</script>
+
+	</body>
+</html>

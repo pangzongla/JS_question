@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			h1{
+				font-size: 40px;
+				/* 给动画取个名字 */
+				animation-name: xxx;
+				/* 过渡时间必须加，否则无效果 */
+				animation-duration: 3s; 
+				animation-direction: alternate;
+			}
+			/* 设置关键帧 */
+			@keyframes xxx{
+				0%{
+					/* 一开始是什么状态 */
+					font-size: 40px;
+				}
+				50%{
+					/* 到一半是什么状态 */
+					font-size: 100px;
+				}
+				100%{
+					/* 到结尾是什么状态 */
+					font-size: 40px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>这是animation动画基本格式</h1>
+	</body>
+		<script type="text/javascript">
+		var arr = [1,2,3,2,3];
+		var obj = {}
+		Array.prototype.fn = function(){
+			var brr = []
+			for(var i=0; i<this.length; i++){
+				if(!obj[this[i]]){
+					obj[this[i]] = true;
+					brr.push(this[i])
+				}
+			}
+			return brr
+		}
+		console.log(arr.fn())
+		</script>
+	</body>
+</html>
