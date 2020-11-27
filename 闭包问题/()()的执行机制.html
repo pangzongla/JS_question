@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+function say(){
+	var num =666;
+	function sayAlert(){ alert(num) }
+	num++;//变量加加的优先级比函数高
+	return sayAlert;
+}
+say()(); //意思应该是执行say，执行完后再()
+</script>
+</body>
+</html>

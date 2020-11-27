@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 问打印的结果是什么？
+//考点：var没有块级作用域只是函数级作用域，所以可以外部变量提升
+var name = 'hello';
+(function(){
+	// 提升到这里
+	if(typeof name ==='undefined'){
+		var name = 'jack';//这里的变量被提升
+		console.log("true"+name);
+	}else{
+		console.log('false'+name);
+	} 
+})()
+</script>
+</body>
+</html>

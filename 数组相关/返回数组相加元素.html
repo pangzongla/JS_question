@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 一下数组,返回相加为5的两个元素
+			var arr = [2,4,6,2,1]
+			
+			var target = 5
+			
+			function Fn(arr,target){
+				for(var i=0;i<arr.length;i++){
+					var need = target - arr[i]
+					var ishave = arr.slice(i+1).filter((item)=>item == need)
+					if(ishave.length > 0){
+						var brr = []
+						brr.push(arr[i],ishave[0])
+						return brr
+					}
+				}
+			}
+			console.log(Fn(arr,target))
+			
+		</script>
+	</body>
+</html>

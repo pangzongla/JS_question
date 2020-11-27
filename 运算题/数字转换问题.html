@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 问打印的结果
+			// 考点:
+			//使用Number()函数进行转换,纯数字可以直接转换为数字
+			//但是字符串里有非数字，则会转化为NaN
+			//字符串里面若为空，则转换为0
+			
+			
+			//布尔值，true转换为1，false转换为0
+			//null转换为数字0，undefined转换为NaN
+			console.log(true + 1); //2, true转换成number
+			console.log('name' + true); //nametrue 字符串的强制转换
+			console.log(undefined + 1); //NaN
+			console.log(typeof null); //object
+			
+            console.log(Number("true"))
+		</script>
+	</body>
+</html>

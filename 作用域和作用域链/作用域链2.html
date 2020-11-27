@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			var a = 10
+			function fn() {
+				alert(a)
+				var a = 20
+			}
+			fn() //弹出underfined  
+			alert(a) //弹出10
+
+			var a = 10
+			function fn() {
+				alert(a)
+				a = 20
+			}
+			fn() //函数内找不到变量声明，只能向函数外找，弹出10
+			alert(a) //此时外部的a变量已经和函数内部关联了，所以a的赋值生效，弹出20
+
+			var a = 10
+			function fn() {
+				alert(a)
+				function fn2() {
+					alert(a)
+				}
+			}
+			fn() //向外找变量，弹出10
+			fn2() //一层一层的向外找变量，弹出10；这就叫做作用域链	
+
+			var a = 10
+			function fn(a) {
+				alert(a)
+				a = 20
+			}
+			fn(30) //弹出30
+			alert(a) //弹出10
+		</script>
+	</body>
+</html>

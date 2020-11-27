@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 将[1,[2,3,4,[5,6],7],8]扁平化
+function flat(arr,R){
+	var R = R || [];
+	for(var i=0;i<arr.length;i++){
+		if(Object.prototype.toString.call(arr[i]) =='[object Array]'){
+			flat(arr[i],R)
+		}else{
+			R.push(arr[i]);
+		}
+	}
+	return R;
+}
+console.log(flat([1,[2,3,4,[5,6],7],8]));
+
+// 将数组扁平化并去重升序排序
+let arr = [[1,2,3],[4,5,6,6,[7,8,9,[10]]],12]
+
+let result = []
+let json = {}
+// 扁平/去重
+function fn(arr){
+	for(let i=0;i<arr.length;i++){
+		if(typeof arr[i] == "number"){
+			if(!json[arr[i]]){
+				json[arr[i]] = true
+				result.push(arr[i])
+			}
+		}else{
+			fn(arr[i])
+		}
+	}
+}
+// 升序
+function fn2(arr){
+	for(let i=0; i<arr.length;i++){
+		if(arr[i] < arr[i-1]){
+			let a = arr[i]
+			arr[i] =  arr[i-1]
+			arr[i-1] = a
+		}
+	}
+}
+
+// 最好的方法
+    //  将多维数组转成一维数组
+    flatten (arr, parent) {
+      if (arr == null) arr = []
+      let bol = false // 决定是否为最后一级节点
+      let brr = [].concat(...arr.map((item) => {
+        if (item.layers != '1') {
+          item.fit = []
+          if (parent != undefined) {
+            if (item.children == null) {
+              bol = true // 最后一级
+            }
+            item.fit.push({
+              indicName: item.indicName,
+              indicCode: item.indicCode,
+              parentCode: item.parentCode,
+              layers: item.layers,
+              dir: bol
+            })
+            item.fit = item.fit.concat(...parent.fit)
+          }
+        }
+        return [].concat(item, ...this.flatten(item.children, item))
+      })
+      )
+      return brr
+    },
+
+</script>
+</body>
+</html>

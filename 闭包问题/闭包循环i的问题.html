@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+
+		<script>
+			var lis = document.getElementsByTagName("li");
+
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].index = i; //添加这个才正常，每次循环后存起来
+				lis[i].onclick = function() {
+					alert(this.index); //把i改为this.index
+				}
+			}
+
+			// 或
+			var lis = document.getElementsByTagName("li");
+			for (let i = 0; i < lis.length; i++) {
+				lis[i].onclick = function() {
+					alert(i);
+				}
+			}
+		</script>
+
+	</body>
+</html>

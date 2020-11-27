@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 输出结果是什么
+			var type = "image";
+			var size = {width: 800, height:600};
+			var format = ['jpg','png'];
+			function change(type, size, format){
+				type = 'video';
+				size = {width:1024,height:768};
+				// format.push('mp4');
+				format = [1,2,3]
+			}
+			change(type, size, format); //考点：函数的传参也会分析参数的引用类型
+			console.log(type,size,format);  
+			
+			// 把引用类型当做参数去使用时,如果是重新赋值 = ,那么会为它单独创建一个引用地址,也就是这个重新赋值的变量是另外一个变量,如果是修改就还是引用特性
+		</script>
+	</body>
+</html>

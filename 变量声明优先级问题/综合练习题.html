@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+
+		<script>
+			// 执行结果的顺序是怎么样的？
+			function Foo() {
+				getName = function() {
+					alert(1)
+				}
+				return this;
+			}
+			Foo.getName = function() {
+				alert(2)
+			}
+			Foo.prototype.getName = function() {
+				alert(3)
+			}
+			var getName = function() {
+				alert(4)
+			}
+
+			function getName() {
+				alert(5)
+			}
+
+			// Foo.getName();//第二块代码的意思是，给Foo这个函数绑一个getName，与构造函数和原型无关 2
+			// getName();//声明的把非声明同名函数的覆盖了 4
+			// Foo().getName(); //先执行了Foo，把全局的getName修改了，然后this指向window，也就是window.getName() 1
+			// getName(); //1
+			// new Foo.getName(); //.点的优先级比new运算符高，new (Foo.getName)() 2
+			// new Foo().getName(); //()执行优先级比.高，所以(new Foo()).getName()，this指向实例，所以是执行原型上的getName 3
+			new new Foo().getName(); //同理，new [【new Foo()】.getName()] 3
+		</script>
+	</body>
+</html>

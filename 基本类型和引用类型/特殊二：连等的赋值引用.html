@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 先记住规则 1 连等是从右向左看 2 连等赋值之前，程序会把变量的引用都保存起来，连等过程
+			// 都是假设等于,等到全部假设完了再一起赋值
+			var a = {n:1}
+			var b = a
+			a.x = a = {n:2}
+			
+			// 请问一下打印什么
+			console.log(a.x)
+			console.log(b.x)
+			
+			// 思路:首先a变量引用堆内存中的{n:1},b变量也引用它.然后开始连等,a假设引用{n:2}(但是还没真正引用,所以a还是在引用{n:1}),
+			// 然后a在引用{n:1}的内存空间内又假设x:{n:2}.最后,两个假设全部成立,此时a引用对象成为{n:2},b因为自始至终都引用{n:1}的那个内存空间,所以b为{n:1,x:{n:2}}
+			
+			
+			// var c = {m:1}
+			// var d = c
+			// c = {m:2}
+			
+			// console.log(d) //此时的d还是指向{m:1}
+			
+			
+		</script>
+	</body>
+</html>

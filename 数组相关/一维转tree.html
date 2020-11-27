@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 第一种方法,如果数据量大比较耗性能
+			 listToTree (oldArr) {
+			      oldArr.forEach(element => {
+			        if (element.parentCode !== '') {
+			          oldArr.forEach(ele => {
+			            if (ele.indicCode == element.parentCode) { // 当内层循环的ID== 外层循环的parendId时，（说明有children），需要往该内层id里建个children并push对应的数组；
+			              if (!ele.children) {
+			                ele.children = []
+			              }
+			              ele.children.push(element)
+			            }
+			          })
+			        }
+			      })
+			      // console.log(oldArr) //此时的数组是在原基础上补充了children;
+			      oldArr = oldArr.filter(ele => ele.parentCode === '') // 这一步是过滤，按树展开，将多余的数组剔除；
+			      return oldArr
+			    },
+				
+				// 第二种方法比较好
+				    listToTree (tarArray) {
+				      // 传入参数需要进行深拷贝
+				      let obj = {}
+				      tarArray.map((item, index) => {
+				        obj[item.indicCode] = item
+				      })
+				      let newArr = []
+				      let parent = ''
+				      tarArray.forEach((item) => {
+				        parent = obj[item.parentCode]
+				        if (parent) {
+				          if (parent.children) {
+				            parent.children.push(item)
+				          } else {
+				            parent.children = []
+				            parent.children.push(item)
+				          }
+				        } else {
+				          newArr.push(item)
+				        }
+				      })
+				      return newArr
+				    }
+		</script>
+	</body>
+</html>

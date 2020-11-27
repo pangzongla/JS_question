@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<script>
+// 问代码打印结果？
+// 考点：同个命名的优先级
+//变量申明 > 普通函数 > 函数传参 > 变量提升
+// 诀窍:1.从上到下一条一条执行，需要判断变量的地方，除了是函数能往下确认是否有同名外，其他只能向上找
+//      2.当有一条是fn()，把函数内容放在此位置来看待
+//       3.当变量被修改时，下面都按修改后的变量执行
+
+// ！！！！！这种题只靠诀窍是无法深入理解的,最好靠自己的理解做出！！！！！！！！！！！！！！！！！
+
+// 变量提升起作用 undefined（理解：变量提升的机制）
+// function fn(){
+// 	console.log(bar);
+// 	var bar = 1;
+// }
+
+// 参数起作用 5  （理解：因为本来是undefined，结果传入参数，就有值了）
+// function fn(bar){
+// 	console.log(bar);
+// 	var bar = 1;
+// }
+
+// 函数起作用 bar(){return '函数2';}（理解：首先是变量的提升undefined，函数没有变量提升，放哪里都是看
+// 做放在最前面，后面的函数使得第一个函数无效，然后函数从上到下执行，执行到打印
+// 由于参数优先级低，所以undefined的变量为函数）
+// function fn(bar){
+// 	console.log(bar);
+// 	function bar(){
+// 		return '函数1';
+// 	}
+// 	console.log(bar);
+// 	var bar = 1;
+// 	function bar(){
+// 		return '函数2';
+// 	}
+// }
+
+// 变量起作用 1（理解：直接变提升后赋值1，传进来的参数也是被直接该为1(二次声明原理)，如果变量和函数重名
+// 以变量为主）
+function fn(bar){
+	var bar = 1;
+	var bar = function(){
+		return '函数1';
+	}
+	console.log(bar);
+	function bar(){
+		return '函数2';
+	}
+}
+
+fn(5);
+
+	
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			// 考的是：把引用类型深拷贝了，既然不能直接等于（相当于给它引用地址），那么可以把引用类型拆分成一个一个，这样就不会指向引用地址了
+			
+			var obj1 = {
+				age: 18,
+				arr: [1, 2, 3] //object类型 引用类型
+			}
+			var obj2 = {}
+			function copy(obj1, obj2) {
+				for (var k in obj1) {
+					if (typeof obj1[k] == 'object') {
+						obj2[k] = (obj1[k].constructor == Array) ? [] : {};
+						// 递归函数 把东西深拷贝进去
+						copy(obj1[k], obj2[k])
+					} else {
+						obj2[k] = obj1[k];
+					}
+				}
+				return obj2;
+			}
+			var obj2 = copy(obj1, obj2);
+			obj1.arr[0] = 'zhangsan';
+			console.log(obj1.arr, obj2.arr)
+		</script>
+
+	</body>
+</html>

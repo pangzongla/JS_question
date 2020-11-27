@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<script>
+			function fn(){
+			    var a = 0
+			    return function() {
+			        a++
+			        return a
+			    }
+			}
+			alert(fn()()) //记住闭包变量内外有链接的就会有驻留问题，()先执行一遍fn，形成了虚拟作用域，var a = 0，再()执行return的函数
+			alert(fn()()) //两次的结果都是1，因为两次执行有各自的虚拟作用域，这就是闭包的缺点
+			
+			
+			// 如果
+			var fn1 = fn() //执行了一次fn，声明了a，且把闭包里的函数返回赋值给fn1
+			alert(fn1()) // 执行的是function() { a++ return a} ，a已经声明为0了，所以结果为1
+			alert(fn1()) //是相同的虚拟作用域，上一个已经让a=1,所以结果为2
+			
+			// 这也是一个变量驻留的问题，因为a变量声明后一直存在，被闭包内使用到，所以不能及时销毁
+			
+			// 来道题练练：问执行的结果是什么？
+			// function Foo() {
+			// 	var i = 0;
+			// 	return function() {
+			// 		console.log(i++); //坑：如果是console.log(++i);才加1再打印
+			// 	}
+			// }
+			// var f1 = Foo();
+			// var f2 = Foo(); //f1和f2两个的虚拟作用域都互不影响
+			// f1(); //0 
+			// f1(); //1
+			// f2(); //0
+			
+			// 再来个++有关的
+			/* function say(){
+				var num =666;
+				function sayAlert(){ alert(num) }
+				num++;
+				return sayAlert;
+			}
+			say()(); */  //先执行了一遍,num已将为667了
+		</script>
+
+	</body>
+</html>

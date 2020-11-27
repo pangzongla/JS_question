@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+// 浅拷贝的另一个例子（其实就是换着花样来考你）
+var obj1 = {
+	age:18,
+	arr:[1,2,3]
+}
+function copy(obj1){
+	var obj2 = {}
+	for(var k in obj1){
+		obj2[k]=obj1[k]  //万变不离其宗，当把属性值为数组的东西赋值给另一个对象的属性，也是引用
+	}
+	return obj2;
+}
+var obj2 = copy(obj1);
+
+obj1.arr[0]='ooo';
+
+console.log(obj1.arr,obj2.arr)
+
+
+
+
+
+</script>
+	
+</body>
+</html>
